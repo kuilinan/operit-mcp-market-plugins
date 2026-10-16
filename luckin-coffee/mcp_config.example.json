@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "luckin-coffee": {
-      "type": "streamablehttp",
+      "connectionType": "httpStream",
       "url": "https://gwmcp.lkcoffee.com/order/user/mcp",
       "headers": {
         "Authorization": "Bearer <YOUR_LUCKIN_TOKEN>"
