@@ -8,7 +8,7 @@
 | 项 | 说明 |
 |:--|:--|
 | MCP 类型 | remote |
-| 接入方式 | streamablehttp |
+| 接入方式 | `connectionType: httpStream`（**不要用 `type: streamablehttp`**）|
 | 端点 | `https://gwmcp.lkcoffee.com/order/user/mcp` |
 | 认证方式 | HTTP Header **Bearer** TOKEN |
 | TOKEN 从哪来 | 由品牌渠道发放，**各人自有，请自行获取**，本仓不提供 |
@@ -21,11 +21,18 @@
 3. 填：
    - 名称（自取）：`瑞幸咖啡`
    - 端点 URL：`https://gwmcp.lkcoffee.com/order/user/mcp`
-   - 传输：`streamablehttp`
+   - connectionType：`httpStream`（**不要写 `type: streamablehttp`**）
    - 头：`Authorization: Bearer <换成你自己的 TOKEN>`
 4. 保存 → 点**校验 / 拉取工具列表**
 5. 装成功即可在对话里通过本工具的 `queryShopList`、
    `searchProductForMcp`、`previewOrder`、`createOrder` 等使用
+
+> ⚠️ **版本兼容提示**
+> 在 **Operit 1.12.2** 上，配置里写 `"type": "streamablehttp"`
+> 会被解析器拒绝（报 `unsupported transport`）。
+> 正确写法是用 `"connectionType": "httpStream"`。
+> 老版本（1.11.x）行为未经实测，与此不一致的可能存在；
+> 如果你的版本发生同类拒绝，请改用上面这套写法。
 
 ## 三、能力（八个工具）
 
@@ -66,3 +73,7 @@
 - 本仓**不含**任何真实 token，不发凭据。
 - Token 是**你个人**的门票，泄露后请尽快去对应处作废重发。
 - 不要把 token 提交进你 fork 的仓库里。
+
+## 七、联系
+
+- 邮箱：kuilinan@qq.com
