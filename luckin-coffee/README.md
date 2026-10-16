@@ -1,3 +1,50 @@
+## 0. 安装前必读（v1.0.1）
+
+本插件提供的是**配置示例**。它不含任何 Token。
+Token 的申请、身份绑定必须由使用者本人前往瑞幸官方开放平台完成。
+
+- 误以为“装完即能跑”：无 Token 时，你在 Operit 里的校验会当场失败。
+- 本插件无法帮你、AI 也无法帮你注册账号或领取 Token。
+   绑定的是真人账号，这一层只能由你自走。
+
+### 你需要自己做的两件事
+
+1. 访问瑞幸开放平台，登录申请你自己的 MCP Token：
+   https://open.lkcoffee.com/mcp
+2. 在 Operit 的 MCP 插件设置里新建 remote 类型，粘入下方示例配置，
+   并把 Authorization 里的 <TOKEN> 换成你申请到的那串。
+
+### 安装配置模板（只需改一处）
+
+```json
+{
+  "mcpServers": {
+    "luckin-coffee": {
+      "connectionType": "httpStream",
+      "url": "https://gwmcp.lkcoffee.com/order/user/mcp",
+      "headers": {
+        "Authorization": "Bearer <换成你自己申请的 TOKEN>"
+      }
+    }
+  }
+}
+```
+
+### 版本规范
+
+在 Operit 1.12.2 实测中，“type”: “streamablehttp” 会被解析器拒绝
+（报 unsupported transport）；请统一使用上方“connectionType”: “httpStream”。
+（1.11.x 实测状态未知，写入方式若不相同以本体为准）
+
+### 反馈与联系
+
+发布者邮箱：kuilinan@qq.com
+
+（请勿在 Issue / 评论里贴 Token 或账号页。凡与身份绑定的串一经公开，
+请立即去开放平台作废重发。）
+
+---
+
 # 瑞幸咖啡 MCP（luckin-coffee）
 
 一个接入瑞幸点单能力的远程 MCP，注册进 Operit 后可以用对话直接
