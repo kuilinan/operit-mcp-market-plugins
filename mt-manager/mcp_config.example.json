@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "mt-manager": {
-      "connectionType": "httpStream",
+      "type": "streamable_http",
       "url": "http://127.0.0.1:8787/mcp",
       "headers": {
         "Authorization": "Bearer <YOUR_MT_TOKEN>"
